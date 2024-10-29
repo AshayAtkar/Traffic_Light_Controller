@@ -1,0 +1,178 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+8086_Program.bin -- emu8086 assembler version: 4.08  
+ 
+[ 30-10-2024  --  02:16:07 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       CODE SEGMENT
+[   2]    0000:                                       START:
+[   3]    0000: B0 80                                 MOV AL, 80H
+[   4]    0002: E6 0E                                 OUT 000EH, AL
+[   5]    0004: E6 06                                 OUT 0006H, AL
+[   6]    0006:                                       AGAIN:
+[   7]        :                                       ;FIRST INITIALIZED CONDITION
+[   8]    0006: B7 03                                 MOV BH, 03H ; INITIALIZING COUNTS
+[   9]    0008: B3 03                                 MOV BL, 03H
+[  10]    000A: B6 06                                 MOV DH, 06H
+[  11]    000C: B2 09                                 MOV DL, 09H
+[  12]    000E: B0 0C                                 MOV AL, 0CH
+[  13]    0010: E6 04                                 OUT 0004H, AL ; SETTING UP LIGHTS
+[  14]    0012: B0 09                                 MOV AL, 09H
+[  15]    0014: E6 0C                                 OUT 000CH, AL ; WE CAN ALSO USE BSR MODE
+[  16]        :                                       ;MOV AL, 05H
+[  17]        :                                       ;OUT 0006H, AL
+[  18]        :                                       ;MOV AL, 07H
+[  19]        :                                       ;OUT 0006H, AL
+[  20]        :                                       ;MOV AL, 01H
+[  21]        :                                       ;OUT 000EH, AL
+[  22]        :                                       ;MOV AL, 07H
+[  23]        :                                       ;OUT 000EH, AL
+[  24]    0016: B4 02                                 MOV AH, 02H ; COUNTER FOR FIRST TWO COUNTS
+[  25]    0018:                                       LOOP2:
+[  26]    0018: E8 D2 00                              CALL DISPLAY
+[  27]    001B: FE CF                                 DEC BH
+[  28]    001D: FE CB                                 DEC BL
+[  29]    001F: FE CE                                 DEC DH
+[  30]    0021: FE CA                                 DEC DL
+[  31]    0023: E8 D8 00                              CALL DELAY
+[  32]    0026: FE CC                                 DEC AH
+[  33]    0028: 75 EE                                 JNZ LOOP2
+[  34]    002A: E8 C0 00                              CALL DISPLAY
+[  35]    002D: B0 0A                                 MOV AL, 0AH ; SETTING UP YELLOW LIGHT
+[  36]    002F: E6 04                                 OUT 0004H, AL
+[  37]    0031: FE CF                                 DEC BH
+[  38]    0033: FE CB                                 DEC BL
+[  39]    0035: FE CE                                 DEC DH
+[  40]    0037: FE CA                                 DEC DL
+[  41]    0039: E8 C2 00                              CALL DELAY
+[  42]    003C: E8 AE 00                              CALL DISPLAY
+[  43]        :                                       
+[  44]        :                                       
+[  45]        :                                       ;SECOND INITIALIZED CONDITION
+[  46]    003F: B7 09                                 MOV BH, 09H
+[  47]    0041: B3 03                                 MOV BL, 03H
+[  48]    0043: B6 03                                 MOV DH, 03H
+[  49]    0045: B2 06                                 MOV DL, 06H
+[  50]    0047: B0 21                                 MOV AL, 21H
+[  51]    0049: E6 04                                 OUT 0004H, AL; SETTING UP LIGHTS
+[  52]    004B: B0 09                                 MOV AL, 09H
+[  53]    004D: E6 0C                                 OUT 000CH, AL
+[  54]    004F: B4 02                                 MOV AH, 02H
+[  55]    0051:                                       LOOP3:
+[  56]    0051: E8 99 00                              CALL DISPLAY
+[  57]    0054: FE CF                                 DEC BH
+[  58]    0056: FE CB                                 DEC BL
+[  59]    0058: FE CE                                 DEC DH
+[  60]    005A: FE CA                                 DEC DL
+[  61]    005C: E8 9F 00                              CALL DELAY
+[  62]    005F: FE CC                                 DEC AH
+[  63]    0061: 75 EE                                 JNZ LOOP3
+[  64]    0063: E8 87 00                              CALL DISPLAY
+[  65]    0066: B0 11                                 MOV AL, 11H
+[  66]    0068: E6 04                                 OUT 0004H, AL
+[  67]    006A: FE CF                                 DEC BH
+[  68]    006C: FE CB                                 DEC BL
+[  69]    006E: FE CE                                 DEC DH
+[  70]    0070: FE CA                                 DEC DL
+[  71]    0072: E8 89 00                              CALL DELAY
+[  72]    0075: E8 75 00                              CALL DISPLAY
+[  73]        :                                       
+[  74]        :                                       
+[  75]        :                                       ;THIRD INITIALIZED CONDITION
+[  76]    0078: B7 06                                 MOV BH, 06H
+[  77]    007A: B3 09                                 MOV BL, 09H
+[  78]    007C: B6 03                                 MOV DH, 03H
+[  79]    007E: B2 03                                 MOV DL, 03H
+[  80]    0080: B0 09                                 MOV AL, 09H
+[  81]    0082: E6 04                                 OUT 0004H, AL; SETTING UP LIGHTS
+[  82]    0084: B0 0C                                 MOV AL, 0CH
+[  83]    0086: E6 0C                                 OUT 000CH, AL
+[  84]    0088: B4 02                                 MOV AH, 02H
+[  85]    008A:                                       LOOP4:
+[  86]    008A: E8 60 00                              CALL DISPLAY
+[  87]    008D: FE CF                                 DEC BH
+[  88]    008F: FE CB                                 DEC BL
+[  89]    0091: FE CE                                 DEC DH
+[  90]    0093: FE CA                                 DEC DL
+[  91]    0095: E8 66 00                              CALL DELAY
+[  92]    0098: FE CC                                 DEC AH
+[  93]    009A: 75 EE                                 JNZ LOOP4
+[  94]    009C: E8 4E 00                              CALL DISPLAY
+[  95]    009F: B0 0A                                 MOV AL, 0AH
+[  96]    00A1: E6 0C                                 OUT 000CH, AL
+[  97]    00A3: FE CF                                 DEC BH
+[  98]    00A5: FE CB                                 DEC BL
+[  99]    00A7: FE CE                                 DEC DH
+[ 100]    00A9: FE CA                                 DEC DL
+[ 101]    00AB: E8 50 00                              CALL DELAY
+[ 102]    00AE: E8 3C 00                              CALL DISPLAY
+[ 103]        :                                       
+[ 104]        :                                       
+[ 105]        :                                       ;FOURTH INITIALIZED CONDITION
+[ 106]    00B1: B7 03                                 MOV BH, 03H
+[ 107]    00B3: B3 06                                 MOV BL, 06H
+[ 108]    00B5: B6 09                                 MOV DH, 09H
+[ 109]    00B7: B2 03                                 MOV DL, 03H
+[ 110]    00B9: B0 09                                 MOV AL, 09H
+[ 111]    00BB: E6 04                                 OUT 0004H, AL; SETTING UP LIGHTS
+[ 112]    00BD: B0 21                                 MOV AL, 21H
+[ 113]    00BF: E6 0C                                 OUT 000CH, AL
+[ 114]    00C1: B4 02                                 MOV AH, 02H
+[ 115]    00C3:                                       LOOP5:
+[ 116]    00C3: E8 27 00                              CALL DISPLAY
+[ 117]    00C6: FE CF                                 DEC BH
+[ 118]    00C8: FE CB                                 DEC BL
+[ 119]    00CA: FE CE                                 DEC DH
+[ 120]    00CC: FE CA                                 DEC DL
+[ 121]    00CE: E8 2D 00                              CALL DELAY
+[ 122]    00D1: FE CC                                 DEC AH
+[ 123]    00D3: 75 EE                                 JNZ LOOP5
+[ 124]    00D5: E8 15 00                              CALL DISPLAY
+[ 125]    00D8: B0 11                                 MOV AL, 11H
+[ 126]    00DA: E6 0C                                 OUT 000CH, AL
+[ 127]    00DC: FE CF                                 DEC BH
+[ 128]    00DE: FE CB                                 DEC BL
+[ 129]    00E0: FE CE                                 DEC DH
+[ 130]    00E2: FE CA                                 DEC DL
+[ 131]    00E4: E8 17 00                              CALL DELAY
+[ 132]    00E7: E8 03 00                              CALL DISPLAY
+[ 133]        :                                       
+[ 134]        :                                       
+[ 135]    00EA: E9 19 FF                              JMP AGAIN ; GO TO FIRST INITIALIZED CONDITION
+[ 136]        :                                       
+[ 137]        :                                       
+[ 138]        :                                       
+[ 139]        :                                       
+[ 140]        :                                       ; SUBROUTINES
+[ 141]    00ED:                                       DISPLAY PROC NEAR
+[ 142]    00ED: 8A C7                                 MOV AL, BH
+[ 143]    00EF: E6 00                                 OUT 0000H, AL
+[ 144]    00F1: 8A C3                                 MOV AL, BL
+[ 145]    00F3: E6 02                                 OUT 0002H, AL
+[ 146]    00F5: 8A C6                                 MOV AL, DH
+[ 147]    00F7: E6 08                                 OUT 0008H, AL
+[ 148]    00F9: 8A C2                                 MOV AL, DL
+[ 149]    00FB: E6 0A                                 OUT 000AH, AL
+[ 150]    00FD: C3                                    RET
+[ 151]        :                                       DISPLAY ENDP
+[ 152]        :                                       
+[ 153]        :                                       
+[ 154]    00FE:                                       DELAY PROC NEAR
+[ 155]    00FE: B9 FF FF                              MOV CX, 0FFFFH
+[ 156]    0101: 90                                    LOOP1:NOP
+[ 157]    0102: E2 FD                                 LOOP LOOP1
+[ 158]    0104: C3                                    RET
+[ 159]        :                                       DELAY ENDP
+[ 160]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================
